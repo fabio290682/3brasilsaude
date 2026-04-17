@@ -1,0 +1,66 @@
+<div class="container card p-6">
+  <h2>Procedimento Terapêutico</h2>
+  <p style="color:#64748b;">Tela de procedimento com dados de sinais vitais e evolução.</p>
+
+  <form (ngSubmit)="submit()" [formGroup]="form" class="space-y-6">
+    <div class="grid" style="gap:16px; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));">
+      <div class="input-group">
+        <label>Solicitação</label>
+        <input formControlName="request" />
+      </div>
+      <div class="input-group">
+        <label>Tipo do Procedimento</label>
+        <input formControlName="type" />
+      </div>
+      <div class="input-group">
+        <label>Paciente</label>
+        <input formControlName="patient" />
+      </div>
+    </div>
+
+    <div formGroupName="vitalsStart" class="card p-4">
+      <h3>Sinais Vitais de Início</h3>
+      <div class="grid" style="gap:16px; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));">
+        <div class="input-group"><label>Altura</label><input formControlName="height" /></div>
+        <div class="input-group"><label>Peso</label><input formControlName="weight" /></div>
+        <div class="input-group"><label>IMC</label><input formControlName="bmi" /></div>
+        <div class="input-group"><label>Pressão</label><input formControlName="bloodPressure" /></div>
+        <div class="input-group"><label>Pulse</label><input formControlName="pulse" /></div>
+        <div class="input-group"><label>Temp</label><input formControlName="temp" /></div>
+      </div>
+    </div>
+
+    <div formGroupName="vitalsEnd" class="card p-4">
+      <h3>Sinais Vitais de Término</h3>
+      <div class="grid" style="gap:16px; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));">
+        <div class="input-group"><label>Altura</label><input formControlName="height" /></div>
+        <div class="input-group"><label>Peso</label><input formControlName="weight" /></div>
+        <div class="input-group"><label>IMC</label><input formControlName="bmi" /></div>
+        <div class="input-group"><label>Pressão</label><input formControlName="bloodPressure" /></div>
+        <div class="input-group"><label>Pulse</label><input formControlName="pulse" /></div>
+        <div class="input-group"><label>Temp</label><input formControlName="temp" /></div>
+      </div>
+    </div>
+
+    <div formGroupName="procedure" class="card p-4">
+      <h3>Dados do Procedimento</h3>
+      <div class="grid" style="gap:16px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));">
+        <div class="input-group"><label>Responsável</label><input formControlName="responsible" /></div>
+        <div class="input-group"><label>Hora Início</label><input formControlName="startTime" /></div>
+        <div class="input-group"><label>Hora Término</label><input formControlName="endTime" /></div>
+        <div class="input-group"><label>Hemocomponente Retirado</label><input formControlName="componentRemoved" /></div>
+        <div class="input-group"><label>Qtde Bolsas</label><input formControlName="bagsRemoved" /></div>
+        <div class="input-group"><label>Volume Retirado</label><input formControlName="volumeRemoved" /></div>
+        <div class="input-group"><label>Destino</label><input formControlName="destination" /></div>
+        <div class="input-group"><label>Equipamento</label><input formControlName="apheresisEquipment" /></div>
+        <div class="input-group"><label>Evolução</label><textarea formControlName="evolution"></textarea></div>
+      </div>
+    </div>
+
+    <div style="display:flex; justify-content:flex-end; gap:12px; margin-top:16px;">
+      <button type="submit" class="btn-primary">Finalizar Procedimento</button>
+    </div>
+
+    <p *ngIf="statusMessage" style="margin-top:16px; color:#0f172a; font-weight:600;">{{ statusMessage }}</p>
+  </form>
+</div>

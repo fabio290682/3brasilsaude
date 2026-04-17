@@ -1,0 +1,87 @@
+<div class="container card p-6">
+  <h2>Requisição de Transfusão</h2>
+  <p style="color:#64748b;">Dados do paciente e requisição com validação Angular Reactive Forms.</p>
+
+  <form (ngSubmit)="submit()" [formGroup]="form" class="space-y-6">
+    <div class="grid" style="gap:16px; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));">
+      <div class="input-group">
+        <label>ID da Requisição</label>
+        <input formControlName="id" />
+        <span *ngIf="fieldError('id')" class="field-error">Campo obrigatório</span>
+      </div>
+      <div class="input-group">
+        <label>Data/Hora</label>
+        <input formControlName="dateTime" />
+      </div>
+      <div class="input-group">
+        <label>Situação do Paciente</label>
+        <input formControlName="patientStatus" />
+      </div>
+      <div class="input-group">
+        <label>Prioridade</label>
+        <input formControlName="priority" />
+      </div>
+      <div class="input-group">
+        <label>Situação</label>
+        <input formControlName="status" />
+      </div>
+    </div>
+
+    <div formGroupName="patient" class="card p-4">
+      <h3>Dados do Paciente</h3>
+      <div class="grid" style="gap:16px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));">
+        <div class="input-group">
+          <label>Paciente</label>
+          <input formControlName="name" />
+        </div>
+        <div class="input-group">
+          <label>Registro Hospitalar</label>
+          <input formControlName="hospitalReg" />
+        </div>
+        <div class="input-group">
+          <label>Tipo Sanguíneo</label>
+          <input formControlName="bloodType" />
+        </div>
+        <div class="input-group">
+          <label>Convênio</label>
+          <input formControlName="agreement" />
+        </div>
+        <div class="input-group">
+          <label>Quarto</label>
+          <input formControlName="room" />
+        </div>
+      </div>
+    </div>
+
+    <div formGroupName="details" class="card p-4">
+      <h3>Informações Importantes</h3>
+      <div class="grid" style="gap:16px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));">
+        <div class="input-group">
+          <label>Características</label>
+          <textarea formControlName="characteristics"></textarea>
+        </div>
+        <div class="input-group">
+          <label>Fenotipagem</label>
+          <textarea formControlName="phenotyping"></textarea>
+        </div>
+        <div class="input-group">
+          <label>Anticorpos</label>
+          <textarea formControlName="antibodies"></textarea>
+        </div>
+        <div class="input-group">
+          <label>Observação</label>
+          <textarea formControlName="observations"></textarea>
+        </div>
+        <div class="input-group">
+          <label>Bolsas Reservadas</label>
+          <input formControlName="reservedBags" />
+        </div>
+      </div>
+    </div>
+
+    <div style="display:flex; justify-content:flex-end; gap:12px; margin-top:16px;">
+      <button type="submit" class="btn-primary">Atualizar Requisição</button>
+    </div>
+    <p *ngIf="statusMessage" style="margin-top:16px; color:#0f172a; font-weight:600;">{{ statusMessage }}</p>
+  </form>
+</div>

@@ -1,0 +1,24 @@
+<div class="app-shell">
+  <header class="app-header container">
+    <div class="app-brand">
+      <h1>3BrasilTech Blood Bank</h1>
+      <p>Sistema de gerenciamento de hemoterapia com fluxo de trabalho de coleta, transfusão e terapia.</p>
+    </div>
+    <div class="app-meta">
+      <span>Versão 1.0</span>
+      <span>Modo Operacional</span>
+    </div>
+  </header>
+
+  <div class="container app-main">
+    <nav class="nav-tabs">
+      <a *ngFor="let item of navigation" [routerLink]="item.path" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="nav-tab">
+        {{ item.label }}
+      </a>
+    </nav>
+
+    <section class="main-panel">
+      <router-outlet></router-outlet>
+    </section>
+  </div>
+</div>

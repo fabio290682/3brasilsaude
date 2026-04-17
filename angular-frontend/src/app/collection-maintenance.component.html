@@ -1,0 +1,128 @@
+<div class="container card p-6">
+  <h2 style="margin-top:0;">Manutenção de Coleta</h2>
+  <p style="color:#64748b;">Formulário controlado em Angular com validação e persistência no backend.</p>
+
+  <form (ngSubmit)="submit()" [formGroup]="form" class="space-y-6">
+    <div class="grid" style="gap:16px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));">
+      <div class="input-group">
+        <label>Triagem</label>
+        <input formControlName="triagem" />
+        <span *ngIf="fieldError('triagem')" class="field-error">Campo obrigatório</span>
+      </div>
+      <div class="input-group">
+        <label>Coleta</label>
+        <input formControlName="coleta" />
+        <span *ngIf="fieldError('coleta')" class="field-error">Campo obrigatório</span>
+      </div>
+      <div class="input-group">
+        <label>Data da Coleta</label>
+        <input formControlName="date" />
+        <span *ngIf="fieldError('date')" class="field-error">Campo obrigatório</span>
+      </div>
+      <div class="input-group">
+        <label>Opção de Coleta</label>
+        <input formControlName="option" />
+      </div>
+      <div class="input-group">
+        <label>Tipo de Coleta</label>
+        <input formControlName="type" />
+      </div>
+    </div>
+
+    <div formGroupName="start" class="card p-4">
+      <h3>Início de Coleta</h3>
+      <div class="grid" style="gap:16px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));">
+        <div class="input-group">
+          <label>Flebotomista</label>
+          <input formControlName="phlebotomist" />
+        </div>
+        <div class="input-group">
+          <label>Qtde a Coletar</label>
+          <input formControlName="targetQty" />
+          <span *ngIf="fieldError('start.targetQty')" class="field-error">Campo obrigatório</span>
+        </div>
+        <div class="input-group">
+          <label>Tipo da Bolsa</label>
+          <input formControlName="bagType" />
+        </div>
+      </div>
+    </div>
+
+    <div formGroupName="end" class="card p-4">
+      <h3>Término de Coleta</h3>
+      <div class="grid" style="gap:16px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));">
+        <div class="input-group">
+          <label>Flebotomista</label>
+          <input formControlName="phlebotomist" disabled />
+        </div>
+        <div class="input-group">
+          <label>Qtde Coletada</label>
+          <input formControlName="actualQty" />
+          <span *ngIf="fieldError('end.actualQty')" class="field-error">Campo obrigatório</span>
+        </div>
+        <div class="input-group">
+          <label>Hora de Início</label>
+          <input formControlName="startTime" />
+          <span *ngIf="fieldError('end.startTime')" class="field-error">Campo obrigatório</span>
+        </div>
+        <div class="input-group">
+          <label>Hora de Término</label>
+          <input formControlName="endTime" />
+          <span *ngIf="fieldError('end.endTime')" class="field-error">Campo obrigatório</span>
+        </div>
+        <div class="input-group">
+          <label>Local Puncionado</label>
+          <select formControlName="punctureSite">
+            <option>D - Direito</option>
+            <option>E - Esquerdo</option>
+          </select>
+        </div>
+        <div class="input-group">
+          <label>Homogeneizador</label>
+          <select formControlName="homogenizer">
+            <option>201 - COMPOGUARD COMPLETE 004CG00707</option>
+          </select>
+          <span *ngIf="fieldError('end.homogenizer')" class="field-error">Campo obrigatório</span>
+        </div>
+      </div>
+    </div>
+
+    <div formGroupName="observations" class="card p-4">
+      <h3>Observações</h3>
+      <div class="grid" style="gap:16px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));">
+        <div class="input-group">
+          <label>Observação da Coleta</label>
+          <textarea formControlName="collection"></textarea>
+        </div>
+        <div class="input-group">
+          <label>Observação para a Coleta</label>
+          <textarea formControlName="forCollection"></textarea>
+        </div>
+        <div class="input-group">
+          <label>Observação para o Fracionamento</label>
+          <textarea formControlName="fractionation"></textarea>
+        </div>
+      </div>
+    </div>
+
+    <div formGroupName="supplies" class="grid" style="gap:16px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));">
+      <div class="input-group">
+        <label>Lote (Sol.Alcoólica)</label>
+        <input formControlName="alcoholLot" />
+        <span *ngIf="fieldError('supplies.alcoholLot')" class="field-error">Campo obrigatório</span>
+      </div>
+      <div class="input-group">
+        <label>Lote (Sol. Degermante)</label>
+        <input formControlName="degermantLot" />
+        <span *ngIf="fieldError('supplies.degermantLot')" class="field-error">Campo obrigatório</span>
+      </div>
+    </div>
+
+    <div style="display:flex; justify-content:flex-end; gap:12px; flex-wrap:wrap; margin-top:16px;">
+      <button type="button" class="btn-primary" (click)="resetForm()">Limpar</button>
+      <button type="submit" class="btn-primary">Salvar Alterações</button>
+    </div>
+
+    <p *ngIf="statusMessage" style="margin-top:16px; color:#0f172a; font-weight:600;">{{ statusMessage }}</p>
+  </form>
+</div>
