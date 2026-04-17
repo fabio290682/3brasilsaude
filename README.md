@@ -81,9 +81,10 @@ Este repositório reúne o backend Node.js com MongoDB e o frontend Angular para
 
 ## GitHub Deployment
 
-Este repositório agora inclui um workflow GitHub Actions em `.github/workflows/ci-and-deploy.yml`.
+Este repositório agora inclui um workflow GitHub Actions em `.github/workflows/ci-and-deploy.yml` e um workflow de GitHub Pages em `.github/workflows/pages-deploy.yml`.
 
 - `build` valida e gera os builds React e Angular
 - `docker-deploy` constrói e envia a imagem Docker para o GitHub Container Registry quando um push é feito em `main`
+- `pages-deploy` constrói o app React e publica o conteúdo estático em `gh-pages`
 
-Para usar o deploy automático, basta habilitar o workflow no GitHub. O `GITHUB_TOKEN` já é usado para autenticação com o registry.
+Para usar o deploy automático, basta habilitar os workflows no GitHub. O `GITHUB_TOKEN` já é usado para autenticação com o registry e para publicar no GitHub Pages.
